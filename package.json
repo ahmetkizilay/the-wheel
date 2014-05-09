@@ -1,0 +1,26 @@
+{
+  "name": "the-wheel",
+  "description": "a library of basic data structures and algorithms",
+  "private": true,
+  "author": {
+    "name": "Ahmet Kizilay",
+    "url": "https://github.com/artsince"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artsince/the-wheel.git"
+  },
+  "bugs": "https://github.com/artsince/the-wheel/issues",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.18.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "engines": {
+    "node": "*"
+  }
+}
