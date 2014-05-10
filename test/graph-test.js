@@ -39,4 +39,9 @@ describe('testing shortest path algorithms', function() {
         var path = graph.shortestPath(nodeA, nodeC);
         expect(path).be.eql(['A', 'B', 'D', 'C']);
     });
+
+    it('shortestPathAllPairs algorithm should return the shortest path A -> B -> D -> C', function() {
+        var path = graph.shortestPathAllPairs(nodeA, nodeC);
+        expect(path).be.eql(['A', 'B', 'D', 'C']);
+    });
 });
