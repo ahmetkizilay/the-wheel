@@ -40,4 +40,8 @@ describe('if DLLink methods are working well then it', function () {
         expect(dlList.length()).to.equal(3);
     });
 
+    it('get(i) should yield the same value as removeAt(i)', function() {
+        expect(dlList.get(0)).to.equal(dlList.removeAt(0));
+    });
+
 });

@@ -321,6 +321,41 @@ Graph.prototype.shortestPathAllPairs = function (from, to) {
     return _fn_findPath.call(this, from, to);
 };
 
+Graph.prototype.topologicalSort = function() {
+    var taskOrder = [];
+    var ready = new DLList();
+    var i;
+
+    for(i = 0; i < this.nodes.length; i += 1) {
+        this.nodes[i].preqLeft = this.nodes[i].links.length;
+        
+        if(this.nodes[i].preqLeft === 0) {
+            ready.append(this.nodes[i]);
+        }
+    }
+
+    while(!ready.isEmpty()) {
+        var thisNode = ready.removeAt(0);
+
+        taskOrder.push(thisNode.name);
+
+        for(i = 0; i < this.nodes.length; i += 1) {
+            if(this.nodes[i].preqLeft === 0) { // already sent to the taskOrder list
+                continue;
+            }
+
+            if(this.nodes[i].hasLinkTo(thisNode)) {
+                this.nodes[i].preqLeft -= 1;
+                if(this.nodes[i].preqLeft === 0) { // preqLeft 0, so send to the ready list
+                    ready.append(this.nodes[i]);
+                }
+            }
+        }
+    }
+
+    return taskOrder;
+};
+
 if(typeof module !== undefined) {
     module.exports = {
         Link: Link,

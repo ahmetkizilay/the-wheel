@@ -62,6 +62,16 @@ DLList.prototype.contains = function (obj) {
     return false;
 };
 
+DLList.prototype.removeAt = function (index) {
+    var obj = this.get(index);
+
+    if(obj !== null) {
+        this.remove(obj);
+    }
+
+    return obj;
+};
+
 DLList.prototype.remove = function (obj) {
     if(obj.constructor.name === 'DLCell') {
         obj.prev.next = obj.next;
@@ -112,7 +122,7 @@ DLList.prototype.length = function() {
     }
 
     return i;
-}
+};
 
 if(typeof module !== undefined) {
     module.exports = DLList;
