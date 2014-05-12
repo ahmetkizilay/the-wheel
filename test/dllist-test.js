@@ -44,4 +44,26 @@ describe('if DLLink methods are working well then it', function () {
         expect(dlList.get(0)).to.equal(dlList.removeAt(0));
     });
 
+    it('reverse of the list should be 3-2-1', function() {
+        expect(dlList.reverse().toString()).to.equal("3 2 1");
+    });
+
+    it('last should return 3', function() {
+        expect(dlList.last().value).to.equal(3);
+    });
+
+    it('reverse method should set correct prev values', function() {
+        var node = dlList.reverse().last();
+        expect(node.value).to.equal(1);
+        node = node.prev;
+        expect(node.value).to.equal(2);
+        node = node.prev;
+        expect(node.value).to.equal(3);
+        expect(node.prev).to.eql(dlList.sentinel);
+    });
+
+    it('toArray method should return an array [1, 2, 3]', function() {
+        expect(dlList.toArray()).to.eql([1, 2, 3]);
+    });
+
 });

@@ -106,7 +106,7 @@ DLList.prototype.toString = function() {
         iterator = iterator.next;
     }
 
-    return result;
+    return result.trim();
 };
 
 DLList.prototype.isEmpty = function() {
@@ -122,6 +122,48 @@ DLList.prototype.length = function() {
     }
 
     return i;
+};
+
+DLList.prototype.reverse = function() {
+    var current = this.sentinel.next;
+    var previous = null;
+    var temp = null;
+
+    while(current !== null) {
+        temp = current.next;
+        current.next = previous;
+        if(previous) {
+            previous.prev = current;
+        }
+
+        previous = current;
+        current = temp;
+    }
+
+    this.sentinel.next = previous;
+    if(previous) previous.prev = this.sentinel;
+
+    return this;
+};
+
+DLList.prototype.last = function() {
+    var iterator = this.sentinel.next;
+    while(iterator.next !== null) {
+        iterator = iterator.next;
+    }
+
+    return iterator;
+};
+
+DLList.prototype.toArray = function() {
+    var arr = [], iterator = this.sentinel.next;
+
+    while(iterator !== null) {
+        arr.push(iterator.value);
+        iterator = iterator.next;
+    }
+
+    return arr;
 };
 
 if(typeof module !== undefined) {
